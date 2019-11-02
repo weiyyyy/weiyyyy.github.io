@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>springboot笔记 // My New Hugo Site</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://weiyyyy.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="springboot笔记"/>
+<meta name="twitter:description" content="springboot笔记 简化部署 &lt;!-- 这个插件，可以将应用打包成一个可执行的jar包；--&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;  将这个应用打成jar包，直接使用java -jar 的命令进行执行；
+POM文件 &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;1.5.9.RELEASE&lt;/version&gt; &lt;/parent&gt; 他的父项目 &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt; &lt;version&gt;1.5.9.RELEASE&lt;/version&gt; &lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt; &lt;/parent&gt; 他来管理spring boot 所有依赖版本；  Spring Boot的版本仲裁中心；
+以后我们导入依赖默认是不需要写版本的；（没有在dependencies里面管理的依赖就需要声明版本号）
+导入的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt;  spring-boot-starter-==web==：
+spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所以来的组件；
+spring boot 将所有的功能场景都抽取出来，做成一个个的starters(启动器)，只需在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景启动器。
+主程序类，主入口类 /** *@SpringBootApplication 来标注一个主程序类，说明这是一个spring boot应用 */ @SpringBootApplication public class HelloWorldMainApplication { public static void main(String[] args) { //Spring应用启动起来 SpringApplication.run(HelloWorldMainApplication.class,args); } }  @Retention(RetentionPolicy."/>
+
+    <meta property="og:title" content="springboot笔记" />
+<meta property="og:description" content="springboot笔记 简化部署 &lt;!-- 这个插件，可以将应用打包成一个可执行的jar包；--&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;  将这个应用打成jar包，直接使用java -jar 的命令进行执行；
+POM文件 &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;1.5.9.RELEASE&lt;/version&gt; &lt;/parent&gt; 他的父项目 &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt; &lt;version&gt;1.5.9.RELEASE&lt;/version&gt; &lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt; &lt;/parent&gt; 他来管理spring boot 所有依赖版本；  Spring Boot的版本仲裁中心；
+以后我们导入依赖默认是不需要写版本的；（没有在dependencies里面管理的依赖就需要声明版本号）
+导入的依赖 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt;  spring-boot-starter-==web==：
+spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所以来的组件；
+spring boot 将所有的功能场景都抽取出来，做成一个个的starters(启动器)，只需在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景启动器。
+主程序类，主入口类 /** *@SpringBootApplication 来标注一个主程序类，说明这是一个spring boot应用 */ @SpringBootApplication public class HelloWorldMainApplication { public static void main(String[] args) { //Spring应用启动起来 SpringApplication.run(HelloWorldMainApplication.class,args); } }  @Retention(RetentionPolicy." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://weiyyyy.github.io/post/springboot%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2019-11-02T18:24:15+08:00" />
+<meta property="article:modified_time" content="2019-11-02T18:24:15+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://weiyyyy.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">springboot笔记</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 2, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="springboot笔记">springboot笔记</h1>
+
+<h2 id="简化部署">简化部署</h2>
+
+<pre><code class="language-xml">&lt;!-- 这个插件，可以将应用打包成一个可执行的jar包；--&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre>
+
+<p>将这个应用打成jar包，直接使用java -jar 的命令进行执行；</p>
+
+<h2 id="pom文件">POM文件</h2>
+
+<pre><code class="language-xaml">&lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;1.5.9.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+他的父项目
+&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;
+		&lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt;
+&lt;/parent&gt;
+他来管理spring boot 所有依赖版本；
+</code></pre>
+
+<p>Spring Boot的版本仲裁中心；</p>
+
+<p>以后我们导入依赖默认是不需要写版本的；（没有在dependencies里面管理的依赖就需要声明版本号）</p>
+
+<h2 id="导入的依赖">导入的依赖</h2>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p><strong>spring-boot-starter</strong>-==web==：</p>
+
+<p>spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所以来的组件；</p>
+
+<p>spring boot 将所有的功能场景都抽取出来，做成一个个的starters(启动器)，只需在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景启动器。</p>
+
+<h2 id="主程序类-主入口类">主程序类，主入口类</h2>
+
+<pre><code class="language-java">/**
+*@SpringBootApplication 来标注一个主程序类，说明这是一个spring boot应用
+*/
+@SpringBootApplication
+public class HelloWorldMainApplication {
+    public static void main(String[] args) {
+
+        //Spring应用启动起来
+        SpringApplication.run(HelloWorldMainApplication.class,args);
+
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(
+    excludeFilters = {@Filter(
+    type = FilterType.CUSTOM,
+    classes = {TypeExcludeFilter.class}
+), @Filter(
+    type = FilterType.CUSTOM,
+    classes = {AutoConfigurationExcludeFilter.class}
+)}
+)
+public @interface SpringBootApplication {
+</code></pre>
+
+<p>@<strong>SpringBootConfiguration</strong>:spring boot的配置类</p>
+
+<p>​       标注在某个类上，表示这是一个spring boot的配置类；</p>
+
+<p>​       @<strong>Configuration</strong>:配置类上来标注这个注解；</p>
+
+<p>​           配置类&mdash;&mdash; 配置文件；配置类也是容器中的一个组件；@Compoent</p>
+
+<p>@<strong>EnableAutoConfiguration</strong>: 开启自动功能；</p>
+
+<p>​       以前我们需要配置的东西，springboot帮我们自动配置；</p>
+
+<pre><code class="language-java">@AutoConfigurationPackage
+@Import({EnableAutoConfigurationImportSelector.class})
+public @interface EnableAutoConfiguration {
+</code></pre>
+
+<p>@<strong>AutoConfigurationPackage</strong>:自动配置包</p>
+
+<p>​   @<strong>Import</strong>({EnableAutoConfigurationImportSelector.class})：</p>
+
+<p>​   spring的底层注解@Import,给容器中导入一个组件；导入的组件由</p>
+
+<p>AutoConfigurationPackages.class；</p>
+
+<p>==将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到spring容器==；</p>
+
+<p>​   @Import({EnableAutoConfigurationImportSelector.class})</p>
+
+<p>​       给容器导入组件</p>
+
+<p>​       EnableAutoConfigurationImportSelector：导入哪些组件的选择器；</p>
+
+<p>​       将所有需要导入的组件以全类目的方式返回；这些组件就会被添加到容器中；</p>
+
+<p>​       会给容器中导入非常多的自动配置类；</p>
+
+<p>J2EE的整体整合解决方案和自动配置都在1spring-boot-autoconfigure-1.5.9.RELEASE.jar；</p>
+
+<h2 id="使用spring-initializer快速创建spring-boot-项目">使用Spring Initializer快速创建Spring Boot 项目</h2>
+
+<p>使用IDE选择我们需要的模块；向导会联网创建Spring Boot项目；</p>
+
+<p>默认生成的springboot项目；</p>
+
+<ul>
+<li>主程序已经生成好了，我们只需要编写自己的逻辑</li>
+<li>resource文件夹中目录结构
+
+<ul>
+<li>static：保存所有的静态资源；</li>
+<li>templates：保存所有的模板页面；可以使用模板引擎；</li>
+<li>applicationproperties：springboot：springboot应用的配置文件；可以修改一些默认设置；</li>
+</ul></li>
+</ul>
+
+<h1 id="配置文件">配置文件</h1>
+
+<p>springboot使用一个全局的配置文件</p>
+
+<ul>
+<li>application.properties</li>
+<li>application.yml：以数据为中心</li>
+</ul>
+
+<p>配置文件的作用：修改SpringBoot自动配置的默认值；</p>
+
+<p>YAML:配置例子</p>
+
+<pre><code class="language-yaml">server:
+	port: 8081
+</code></pre>
+
+<h1 id="yaml基本语法">YAML基本语法</h1>
+
+<p>k:(空格) v: 表示一对键值对（空格必须有）</p>
+
+<p>以空格的缩进来控制层级关系；只要左对齐都是同一层级的；</p>
+
+<p>属性和值也是大小写敏感；</p>
+
+<h2 id="值得写法">值得写法</h2>
+
+<p>字面量：普通的值（数字，字符串，布尔）；</p>
+
+<p>​   k: V : 字面直接来写；</p>
+
+<p>​   字符串默认不用加上单引号或双引号；</p>
+
+<p>​   “”：双引号；不会转义字符串里面的特殊字符；</p>
+
+<p>​   ’‘：单引号；会转义特殊字符；</p>
+
+<p>对象、Map（属性和值）（键值对）：</p>
+
+<p>​   k: v :</p>
+
+<p>​       对象还是k: v 的方式</p>
+
+<pre><code class="language-yaml">friends:
+		lastName: zhangsan
+		age: 20
+</code></pre>
+
+<p>行内写法：</p>
+
+<pre><code class="language-yaml">friends: {lastName: zhangsan,age: 20}
+</code></pre>
+
+<p>数组（List、Set）：</p>
+
+<p>​   用- 值表示数组中的一个元素：</p>
+
+<pre><code class="language-yaml">pets:
+ - cat
+ - dog
+ - pig
+</code></pre>
+
+<p>行内写法</p>
+
+<pre><code class="language-yaml">pets: {cat,dog,pig}
+</code></pre>
+
+<h2 id="配置文件的注入">配置文件的注入</h2>
+
+<p>配置文件</p>
+
+<pre><code class="language-yaml">person:
+  lastName: zhangsan
+  age: 18
+  boss: true
+  brith: 2018/12/12
+  maps: {k1: v1,k2: v2}
+  lists:
+    - lisi
+    - zhaoliu
+  dog:
+    name: 小狗
+    age: 1
+</code></pre>
+
+<p>Javabean：</p>
+
+<pre><code class="language-java">    
+/**
+ * 将配置文件中配置的每一个属性的值映射到这个组件中
+ * @ConfigurationProperties:告诉springboot所有属性和配置文件绑定
+ */
+@Component
+@ConfigurationProperties(prefix = &quot;person&quot;)
+public class Person {
+    private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date brith;
+
+    private Map&lt;String,Object&gt; maps;
+    private List&lt;Object&gt; lists;
+    private Dog dog;private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date brith;
+
+    private Map&lt;String,Object&gt; maps;
+    private List&lt;Object&gt; lists;
+    private Dog dog;
+</code></pre>
+
+<p>我们可以导入配置文件处理器，以后编写就有提示：</p>
+
+<pre><code class="language-xml">  &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+  &lt;/dependency&gt;
+</code></pre>
+
+<h1 id="propertysource-importresource">@PropertySource&amp;@ImportResource</h1>
+
+<p>@PropertySource(value={&ldquo;classpath:person.properties&rdquo;}):加载指定的配置文件；</p>
+
+<p>@ImportResource：导入spring的配置文件，让配置文件里面的类容生效；</p>
+
+<p>标注在一个配置类上</p>
+
+<pre><code class="language-java">@ImportResource(location={&quot;classpath:bean.xml&quot;})
+</code></pre>
+
+<p>SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式</p>
+
+<p>1、配置类=========Spring的配置文件</p>
+
+<p>2、使用@Bean给容器中添加组件</p>
+
+<pre><code class="language-java">@Configuration
+public class MyAppconfig {
+    @Bean
+    public HelloService helloService(){
+        System.out.println(&quot;配置类@Bean给容器中添加组件了&quot;);
+        return new HelloService();
+    }
+}
+</code></pre>
+
+<h1 id="配置文件占位符">配置文件占位符</h1>
+
+<p>1、随机数</p>
+
+<pre><code class="language-java">random.value、{random.int}、${random.long}
+
+random.int(10)、{random.int[1024,65536]}
+
+</code></pre>
+
+<p>2、占位符获取之前配置的值，如果没有可以用“ ：”指定默认值；</p>
+
+<h1 id="profile">Profile</h1>
+
+<p>1、多Profile文件</p>
+
+<p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml</p>
+
+<p>默认使用application.properties</p>
+
+<p>2、yml支持多文档块方式</p>
+
+<pre><code class="language-yml">server:
+	port: 8081
+spring:
+	profiles:
+		active: dev
+---
+server:
+	port:8083
+spring:
+	profiles: dev
+---
+server:
+	port:8084
+spring:
+	profiles: prod  #指定属于哪个环境
+</code></pre>
+
+<p>3、激活指定profile</p>
+
+<p>​   1、在配置文件中指定 spring.profiles.active=dev</p>
+
+<p>​   2、命令行：</p>
+
+<p>​       &ndash;spring.profiles.active=dev</p>
+
+<p>​       直接在测试的时候，配置传入命令行参数</p>
+
+<p>​   3、虚拟机参数；</p>
+
+<p>​       -Dspring.profiles.active=dev</p>
+
+<h1 id="配置文件加载位置">配置文件加载位置</h1>
+
+<p>springboot启动会扫描以下位置的application.properties或者application.yml文件作为springboot的默认配置文件</p>
+
+<p>​   -file:./config/</p>
+
+<p>​   -file:./</p>
+
+<p>​   -classpath:/config/</p>
+
+<p>​   -classpath:/</p>
+
+<p>优先级由高到低，高优先级的配置会覆盖低优先级的配置；</p>
+
+<p>springboot会从这四个位置全部加载主配置文件；<strong>互补配置</strong>；</p>
+
+<p>==我还可以通过spring.config.location来改变默认的配置文件位置==</p>
+
+<p>项目打包以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；配置文件和默认加载的配置文件会共同启动形成互补配置；</p>
+
+<h1 id="自动配置原理">自动配置原理</h1>
+
+<p><a href="https://docs.spring.io/spring-boot/docs/1.5.20.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties">配置文件能配置的属性参照</a>；</p>
+
+<p>自动配置原理：</p>
+
+<p>1）、SpringBoot启动的时候加载主配置类，开启了自动配置功能==@EnableAutoConfiguration==</p>
+
+<p>2）、@EnableAutoConfiguration作用：</p>
+
+<ul>
+<li><p>利用AutoConfigurationImportSelector给容器中导入了一些组件；</p></li>
+
+<li><p>可以查看selectImports()方法的类容；</p></li>
+
+<li><p>List<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);获取候选的配置；</p>
+
+<ul>
+<li><pre><code class="language-java">SpringFactoriesLoader.loadFactoryNames()
+扫面所有jar包类路径下的 META-INF/spring.factories
+把扫描到的这些文件的内容包装成properties对象
+从properties中获取到的EnableAutoConfiguration.class类（类名）对应的值，然后把它们添加到容器中
+</code></pre></li>
+</ul>
+
+<p>==<strong>将类路径下  META-INF/spring.factories里面配置的所有EnableAutoConfiguration的值加入到了容器中；</strong>==</p>
+
+<p>```properties</p></li>
+</ul>
+
+<h1 id="auto-configure">Auto Configure</h1>
+
+<p>org.springframework.boot.autoconfigure.EnableAutoConfiguration=<br />
+org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.cloud.CloudServiceConnectorsAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.cassandra.CassandraReactiveDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.cassandra.CassandraReactiveRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.cassandra.CassandraRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.couchbase.CouchbaseDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.couchbase.CouchbaseReactiveDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.couchbase.CouchbaseReactiveRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.couchbase.CouchbaseRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.jdbc.JdbcRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.ldap.LdapRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.mongo.MongoReactiveDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.mongo.MongoReactiveRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.neo4j.Neo4jRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.solr.SolrRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.elasticsearch.jest.JestAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.elasticsearch.rest.RestClientAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.hateoas.HypermediaAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.hazelcast.HazelcastJpaDependencyAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.http.codec.CodecsAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.influx.InfluxDbAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jdbc.JndiDataSourceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jms.JndiConnectionFactoryAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jms.artemis.ArtemisAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jersey.JerseyAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.ldap.LdapAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mail.MailSenderValidatorAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.mustache.MustacheAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.reactor.core.ReactorCoreAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.servlet.SecurityRequestMatcherProviderAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.sendgrid.SendGridAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.session.SessionAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.oauth2.client.reactive.ReactiveOAuth2ClientAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.security.oauth2.resource.reactive.ReactiveOAuth2ResourceServerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.HttpHandlerAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.ReactiveWebServerFactoryAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.error.ErrorWebFluxAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.function.client.ClientHttpConnectorAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.reactive.function.client.WebClientAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.websocket.reactive.WebSocketReactiveAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.websocket.servlet.WebSocketMessagingAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.webservices.WebServicesAutoConfiguration,<br />
+org.springframework.boot.autoconfigure.webservices.client.WebServiceTemplateAutoConfiguration</p>
+
+<pre><code>
+每一个这样的 xxxAutoConfiguration类都是容器中的一个组件，都加入到容器中；用他们来做自动配置；
+
+3）、每一个自动配置类进行自动配置功能；
+
+4）、以**HttpEncodingAutoConfiguration**（Http编码自动配置）为例：
+
+</code></pre>
+
+<p>java
+@Configuration  //表示这是一个配置类，可以给容器中添加组件
+@EnableConfigurationProperties({HttpProperties.class}) //启用指定类的ConfigurationProperties功能；将配置文件中对应的值和HttpProperties绑定起来；
+@ConditionalOnWebApplication(
+    type = Type.SERVLET
+)  //Spring底层@Condition注解，根据不同的条件，如果满足指定的条件，整个配置类里面的配置才会生效；      判断当前应用是否是web应用
+@ConditionalOnClass({CharacterEncodingFilter.class}) //判断当前项目有没有这个类；CharacterEncodingFilter；SpringMVC中进行乱码解决的过滤器；
+@ConditionalOnProperty(
+    prefix = &ldquo;spring.http.encoding&rdquo;,
+    value = {&ldquo;enabled&rdquo;},
+    matchIfMissing = true
+)   //判断配置文件中是否存在某个配置 spring.http.encoding;如果不存在，判断也是成立的
+public class HttpEncodingAutoConfiguration {
+    &hellip;
+        //他已经和SpringBoot的配置文件映射了
+        private final Encoding properties;
+    &hellip;
+    @Bean  //给容器中添加一个组件,这个组件的某些值需要从properties中获取
+    @ConditionalOnMissingBean //容器中不存在指定bean
+    public CharacterEncodingFilter characterEncodingFilter() {
+        CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+        filter.setEncoding(this.properties.getCharset().name());
+        filter.setForceRequestEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.REQUEST));
+        filter.setForceResponseEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.RESPONSE));
+        return filter;
+    }</p>
+
+<pre><code>
+根据当前不同的条件判断，决定这个配置类是否生效；
+
+一旦这个配置类生效；这个配置类就会给容器中添加各种组件；这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的；
+
+5）、所有在配置文件中能配置的属性都是在xxxProperties类中封装着；配置文件能参照什么就可以参照某个功能对应的这个属性类
+
+</code></pre>
+
+<p>java
+@ConfigurationProperties(
+    prefix = &ldquo;spring.http&rdquo;
+)  //从配置文件中获取指定的值和bean的属性进行绑定
+public class HttpProperties {
+    private boolean logRequestDetails;
+    private final HttpProperties.Encoding encoding = new HttpProperties.Encoding();</p>
+
+<pre><code>
+## 精髓
+
+​   **1）、SpringBoot启动会加载大量的自动配置类**
+
+​   **2）、我们需要的功能有没有SpringBoot默认写好的配置类；**
+
+​   **3）、我们再来看这个自动配置类中到底配置了那些组件；（只要我们要用的组件有，我们就不需要再来配置了）**
+
+​   **4）、给容器中自动配置类添加组件的时候，会从properties类中获取某些属性。我们就可以在配置文件中指定这些属性的值；**
+
+
+
+xxxAutoConfiguration:自动配置类；
+
+给容器中添加组件；
+
+xxxproperties:封装配置文件中相关属性；
+
+## @Conditional派生注解（Spring注解版原生的@Conditional作用）
+
+作用：必须是@Conditional指定的条件成立，才给容器中添加组件，配置类里面的所有内容才生效；
+
+**自动配置类必须在一定的条件才生效；**
+
+我们可以通过启用 debug = true 属性；来让控制台打印自动配置报告，这样我们就可以很方便的指定那些自动配置了生效；
+
+</code></pre>
+
+<h1 id="java">java</h1>
+
+<h1 id="conditions-evaluation-report">CONDITIONS EVALUATION REPORT</h1>
+
+<h2 id="positive-matches-自动配置类启用的">Positive matches:(自动配置类启用的)</h2>
+
+<p>CodecsAutoConfiguration matched:
+      - @ConditionalOnClass found required class &lsquo;org.springframework.http.codec.CodecConfigurer&rsquo; (OnClassCondition)</p>
+
+<p>CodecsAutoConfiguration.JacksonCodecConfiguration matched:
+      - @ConditionalOnClass found required class &lsquo;com.fasterxml.jackson.databind.ObjectMapper&rsquo; (OnClassCondition)</p>
+
+<h2 id="negative-matches-没有启用-没有匹配成功的自动配置类">Negative matches:(没有启用，没有匹配成功的自动配置类)</h2>
+
+<p>ActiveMQAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class &lsquo;javax.jms.ConnectionFactory&rsquo; (OnClassCondition)</p>
+
+<p>AopAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class &lsquo;org.aspectj.lang.annotation.Aspect&rsquo; (OnClassCondition)</p>
+
+<pre><code>
+# 日志
+
+SpringBoot选用 SLF4J 和logback；
+
+
+
+## SLF4J的使用
+
+开发的时候，日志记录方法的调用，不应该直接调用日志的实现类，而是调用日志抽象层里面的方法；
+
+</code></pre>
+
+<p>java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;</p>
+
+<p>public class HelloWorld {
+  public static void main(String[] args) {
+    Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+    logger.info(&ldquo;Hello World&rdquo;);
+  }
+}</p>
+
+<pre><code>
+图示；
+
+![concrete-bindings.png](C:\Users\29468\Desktop\杂\面试笔记\images\concrete-bindings.png)
+
+每一个日志的实现框架都有自己的配置文件。使用受SLF4J以后，**配置文件还是做成日志实现框架的配置文件；**
+
+## 遗留问题
+
+a (slf4j+logback):spring(commons-logging)、Hibernate(jboss-logging)、MyBatis、xxx
+
+统一日志文件，即使是别的框架和我一起统一使用slf4j进行输出；
+
+![legacy](C:\Users\29468\Desktop\杂\面试笔记\images\legacy.png)
+
+
+
+如何让系统中所有日志都统一到slf4j；
+
+==1、将系统中其他日志框架排除；==
+
+==2、用中间包替换原有的日志框架；==
+
+==3、导入slf4j其他的实现；==
+
+## springboot日志关系
+
+</code></pre>
+
+<p>xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+      <version>2.1.3.RELEASE</version>
+      <scope>compile</scope>
+</dependency></p>
+
+<pre><code>
+springboot使用他来做日志功能；
+
+</code></pre>
+
+<p>xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-logging</artifactId>
+  <version>2.1.3.RELEASE</version>
+  <scope>compile</scope>
+</dependency></p>
+
+<pre><code>
+![1554362577034](C:\Users\29468\AppData\Roaming\Typora\typora-user-images\1554362577034.png)
+
+总结：
+
+​   1）、springboot底层也是使用slf4j+logback的方式记录日志；
+
+​   2）、springboot也把其他日志替换成了slf4j;
+
+​   3）、中间替换包：
+
+​   4）、如果我们要引入其他框架，一定要把默认的日志框架移除掉；
+
+​           spring框架使用的是commons-logging; 
+
+# Web开发
+
+使用springboot；
+
+1）、创建springboot应用，选中我们需要的模块；
+
+2）、springboot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来；
+
+3）、自己编写业务代码；
+
+
+
+自动配置原理；
+
+这个场景springboot帮我们配置了什么？
+
+</code></pre>
+
+<p>xml
+xxxAutoConfiguration:帮我们给容器中自动配置组件；
+xxxProperties:配置类来封装配置文件的内容；</p>
+
+<pre><code>
+
+
+## springboot对静态资源的映射规则
+
+</code></pre>
+
+<p>java
+@ConfigurationProperties(
+    prefix = &ldquo;spring.resources&rdquo;,
+    ignoreUnknownFields = false
+)
+public class ResourceProperties {
+    //可以设置和资源有关的参数，缓存时间等</p>
+
+<pre><code>
+
+
+</code></pre>
+
+<p>java
+ public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            if (!this.resourceProperties.isAddMappings()) {
+                logger.debug(&ldquo;Default resource handling disabled&rdquo;);
+            } else {
+                Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+                CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
+                if (!registry.hasMappingForPattern(&ldquo;/webjars/<strong>&rdquo;)) {
+                    this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{&ldquo;/webjars/</strong>&rdquo;}).addResourceLocations(new String[]{&ldquo;classpath:/META-INF/resources/webjars/&ldquo;}).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+                }</p>
+
+<pre><code>            String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+            if (!registry.hasMappingForPattern(staticPathPattern)) {
+                this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern}).addResourceLocations(getResourceLocations(this.resourceProperties.getStaticLocations())).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+            }
+
+        }
+    }
+</code></pre>
+
+<p>//配置欢迎页映射
+@Bean
+public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext) {
+            return new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext), applicationContext, this.getWelcomePage(), this.mvcProperties.getStaticPathPattern());
+        }</p>
+
+<pre><code>
+
+
+1）、所有/webjars/**，都去classpath:/META-INF/resources/webjars/ 找资源；
+
+​   webjars:以jar包的方式引入静态资源；
+
+&lt;https://www.webjars.org/&gt;
+
+localhost:8080/webjars/jquery/3.3.1/jquery.js
+
+</code></pre>
+
+<p>xml
+    <!--引入jQuery的webjar-->在访问的时候只需要写webjars下面资源的名称即可
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1</version>
+        </dependency></p>
+
+<pre><code>
+
+
+2）、”/**“ 访问当前项目的任何资源，（静态资源的文件夹）
+
+</code></pre>
+
+<p>java
+&ldquo;classpath:/META-INF/resources/&ldquo;,
+&ldquo;classpath:/resources/&ldquo;,
+&ldquo;classpath:/static/&ldquo;,
+&ldquo;classpath:/public/&rdquo;
+ &ldquo;/&rdquo;:当前项目的根路径</p>
+
+<pre><code>
+localhost:8080/abc ====从静态资源文件夹里面找abc
+
+
+
+3）、欢迎页；静态资源文件夹下的所有index.html页面；被“/**”映射；
+
+localhost:8080/  找index页面
+
+
+
+4）、所有的 **/favicon.ico 都是在静态资源文件下找；
+
+# 模板引擎
+
+## Thymeleaf使用&amp;语法
+
+</code></pre>
+
+<p>java
+@ConfigurationProperties(
+    prefix = &ldquo;spring.thymeleaf&rdquo;
+)
+public class ThymeleafProperties {
+    private static final Charset DEFAULT_ENCODING;
+    public static final String DEFAULT_PREFIX = &ldquo;classpath:/templates/&ldquo;;
+    public static final String DEFAULT_SUFFIX = &ldquo;.html&rdquo;;
+    //只要我们把HTML页面放在classpath:/templates/，thymeleaf技能自动渲染；</p>
+
+<pre><code>
+导入thymeleaf的名称空间：
+
+xmlns:th=&quot;http://www.thymeleaf.org&quot;;
+
+
+
+# 拦截器的使用
+
+## 1.编写拦截器类，继承 HandlerInterceptor并Override preHandle方法
+
+</code></pre>
+
+<p>java
+public class LoginHandlerInterceptor implements HandlerInterceptor {
+    //目标方法执行之前
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        Object user = request.getSession().getAttribute(&ldquo;loginUser&rdquo;);
+        if(user == null){
+            //未登陆，返回登陆页面
+            request.setAttribute(&ldquo;msg&rdquo;,&ldquo;没有权限请先登陆&rdquo;);
+            request.getRequestDispatcher(&ldquo;/index.html&rdquo;).forward(request,response);
+            return false;
+        }else{
+            //已登陆，放行请求
+            return true;
+        }</p>
+
+<pre><code>}
+</code></pre>
+
+<pre><code>
+## 2.在config类中注册拦截器
+
+</code></pre>
+
+<p>java
+  //注册拦截器
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                super.addInterceptors(registry);
+                //静态资源；  *.css , *.js
+                //SpringBoot已经做好了静态资源映射
+                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns(&ldquo;/**&ldquo;)
+                          .excludePathPatterns(&ldquo;/index.html&rdquo;,&ldquo;/&rdquo;,&ldquo;/user/login&rdquo;);
+            }</p>
+
+<pre><code>
+# thymeleaf公共页面元素抽取
+
+1.抽取公共页面
+
+</code></pre>
+
+<p>java
+<div th:fragment = "xxx"></div></p>
+
+<pre><code>
+2.引入公共片片段
+
+</code></pre>
+
+<p>java
+<div th:insert = "~{footer::xxx}"> </div>
+~{templatename::selector}:模板名::选择器
+~{templatename::fragmentname}:模板名::片段名
+```</p>
+
+<p>三种引入公共片段的th属性：</p>
+
+<p><strong>th:insert</strong>：将公告元素插入到什么引入的元素当中</p>
+
+<p><strong>th:replace</strong>：将声明引入的元素替换为公共片段</p>
+
+<p><strong>th:include</strong>：将被引入的片段内容包含div标签中</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

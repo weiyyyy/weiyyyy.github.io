@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://weiyyyy.github.io/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Nov 2019 18:24:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://weiyyyy.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>springboot笔记</title>
+      <link>https://weiyyyy.github.io/post/springboot%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 02 Nov 2019 18:24:15 +0800</pubDate>
+      
+      <guid>https://weiyyyy.github.io/post/springboot%E7%AC%94%E8%AE%B0/</guid>
+      <description>springboot笔记 简化部署 &amp;lt;!-- 这个插件，可以将应用打包成一个可执行的jar包；--&amp;gt; &amp;lt;build&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;/build&amp;gt;  将这个应用打成jar包，直接使用java -jar 的命令进行执行；
+POM文件 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.5.9.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/parent&amp;gt; 他的父项目 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.5.9.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath&amp;gt;../../spring-boot-dependencies&amp;lt;/relativePath&amp;gt; &amp;lt;/parent&amp;gt; 他来管理spring boot 所有依赖版本；  Spring Boot的版本仲裁中心；
+以后我们导入依赖默认是不需要写版本的；（没有在dependencies里面管理的依赖就需要声明版本号）
+导入的依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt;  spring-boot-starter-==web==：
+spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所以来的组件；
+spring boot 将所有的功能场景都抽取出来，做成一个个的starters(启动器)，只需在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景启动器。
+主程序类，主入口类 /** *@SpringBootApplication 来标注一个主程序类，说明这是一个spring boot应用 */ @SpringBootApplication public class HelloWorldMainApplication { public static void main(String[] args) { //Spring应用启动起来 SpringApplication.run(HelloWorldMainApplication.class,args); } }  @Retention(RetentionPolicy.</description>
+    </item>
+    
+  </channel>
+</rss>
